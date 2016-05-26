@@ -1,7 +1,7 @@
 # II Proyecto Software Design
 Instituto Tecnologico de Costa Rica
 
-Escuela de Ingeniería en Computación
+Escuela de Ingeniería en Computación, 
 Diseño de Software
 
 Implemetacion de un sistema de amortizacion por cuotas para cancelar un prestamos obtenido en la entidad bancaria
