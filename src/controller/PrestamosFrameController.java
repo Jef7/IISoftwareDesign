@@ -4,6 +4,7 @@ import view.PrestamosFrame;
 import javax.swing.*;
 /**
  * Created by Jeffrey on 26/5/2016.
+ *
  */
 public class PrestamosFrameController {
     private PrestamosFrame prestamosFrame; //referencia de la vista

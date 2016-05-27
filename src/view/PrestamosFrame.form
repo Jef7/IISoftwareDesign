@@ -158,7 +158,7 @@
                 </constraints>
                 <properties>
                   <foreground color="-4473925"/>
-                  <text value="Tabla de Amortizacion:"/>
+                  <text value="Tabla Amortizacion:"/>
                 </properties>
               </component>
               <component id="e3f75" class="javax.swing.JTable" binding="table_amortizacion">
