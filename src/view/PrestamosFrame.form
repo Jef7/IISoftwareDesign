@@ -1,105 +1,376 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <form xmlns="http://www.intellij.com/uidesigner/form/" version="1" bind-to-class="view.PrestamosFrame">
-  <grid id="27dc6" binding="prestamosPanel" layout-manager="GridLayoutManager" row-count="5" column-count="9" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
-    <margin top="10" left="20" bottom="10" right="20"/>
+  <grid id="27dc6" binding="mainPanel" layout-manager="GridLayoutManager" row-count="5" column-count="6" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
+    <margin top="0" left="0" bottom="0" right="0"/>
     <constraints>
-      <xy x="20" y="20" width="500" height="400"/>
+      <xy x="2248" y="1217" width="1372" height="599"/>
     </constraints>
-    <properties/>
-    <border type="none"/>
+    <properties>
+      <background color="-14276309"/>
+    </properties>
+    <border type="etched" title="Sistema de Prestamos" title-justification="2">
+      <font/>
+      <title-color color="-1315861"/>
+    </border>
     <children>
-      <component id="a5b27" class="javax.swing.JLabel" binding="lbl_sistemaAmortizacion">
+      <vspacer id="b6d5a">
         <constraints>
-          <grid row="3" column="0" row-span="1" col-span="4" vsize-policy="0" hsize-policy="0" anchor="4" fill="0" indent="0" use-parent-layout="false"/>
+          <grid row="4" column="1" row-span="1" col-span="4" vsize-policy="6" hsize-policy="1" anchor="0" fill="2" indent="0" use-parent-layout="false"/>
+        </constraints>
+      </vspacer>
+      <hspacer id="7ca37">
+        <constraints>
+          <grid row="2" column="0" row-span="1" col-span="1" vsize-policy="1" hsize-policy="6" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
+        </constraints>
+      </hspacer>
+      <hspacer id="34e4d">
+        <constraints>
+          <grid row="2" column="5" row-span="1" col-span="1" vsize-policy="1" hsize-policy="6" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
+        </constraints>
+      </hspacer>
+      <hspacer id="a382c">
+        <constraints>
+          <grid row="3" column="2" row-span="1" col-span="1" vsize-policy="1" hsize-policy="6" anchor="0" fill="0" indent="0" use-parent-layout="false"/>
+        </constraints>
+      </hspacer>
+      <grid id="eca87" binding="fondoPanel" layout-manager="GridLayoutManager" row-count="1" column-count="1" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
+        <margin top="0" left="0" bottom="0" right="0"/>
+        <constraints>
+          <grid row="0" column="1" row-span="1" col-span="4" vsize-policy="3" hsize-policy="3" anchor="0" fill="3" indent="0" use-parent-layout="false"/>
         </constraints>
         <properties>
-          <labelFor value="d0088"/>
-          <text value="Sistema de Amortización:"/>
+          <background color="-14276309"/>
+          <enabled value="false"/>
+          <foreground color="-14736860"/>
         </properties>
-      </component>
-      <component id="fbfee" class="javax.swing.JTextField" binding="txt_nombre">
+        <border type="none"/>
+        <children>
+          <component id="10beb" class="javax.swing.JLabel" binding="lbl_fondo">
+            <constraints>
+              <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="0" fill="2" indent="0" use-parent-layout="false"/>
+            </constraints>
+            <properties>
+              <background color="-14736860"/>
+              <icon value="images/fondo.png"/>
+              <text value=""/>
+            </properties>
+          </component>
+        </children>
+      </grid>
+      <vspacer id="b0ee">
         <constraints>
-          <grid row="0" column="4" row-span="1" col-span="5" vsize-policy="0" hsize-policy="6" anchor="8" fill="1" indent="0" use-parent-layout="false">
-            <preferred-size width="150" height="-1"/>
+          <grid row="1" column="2" row-span="1" col-span="1" vsize-policy="6" hsize-policy="1" anchor="0" fill="2" indent="0" use-parent-layout="false"/>
+        </constraints>
+      </vspacer>
+      <grid id="72711" binding="contenedorPanel" layout-manager="GridLayoutManager" row-count="2" column-count="2" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
+        <margin top="0" left="0" bottom="0" right="0"/>
+        <constraints>
+          <grid row="2" column="2" row-span="1" col-span="1" vsize-policy="3" hsize-policy="3" anchor="0" fill="3" indent="0" use-parent-layout="false"/>
+        </constraints>
+        <properties>
+          <background color="-14276309"/>
+        </properties>
+        <border type="none"/>
+        <children>
+          <grid id="84fa7" binding="resultadosPanel" layout-manager="GridLayoutManager" row-count="5" column-count="2" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
+            <margin top="0" left="0" bottom="0" right="0"/>
+            <constraints>
+              <grid row="0" column="1" row-span="1" col-span="1" vsize-policy="3" hsize-policy="3" anchor="0" fill="3" indent="0" use-parent-layout="false"/>
+            </constraints>
+            <properties>
+              <background color="-14736860"/>
+            </properties>
+            <border type="etched" title="Resultados">
+              <title-color color="-1315861"/>
+            </border>
+            <children>
+              <component id="dce60" class="javax.swing.JTextField" binding="txt_fechaHora">
+                <constraints>
+                  <grid row="0" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="0" fill="1" indent="0" use-parent-layout="false">
+                    <preferred-size width="150" height="-1"/>
+                  </grid>
+                </constraints>
+                <properties>
+                  <background color="-1"/>
+                  <editable value="false"/>
+                  <foreground color="-14276309"/>
+                </properties>
+              </component>
+              <component id="a816c" class="javax.swing.JTextField" binding="txt_tipoCambio">
+                <constraints>
+                  <grid row="1" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="0" fill="1" indent="0" use-parent-layout="false">
+                    <preferred-size width="150" height="-1"/>
+                  </grid>
+                </constraints>
+                <properties>
+                  <background color="-1"/>
+                  <editable value="false"/>
+                  <foreground color="-14276309"/>
+                </properties>
+              </component>
+              <component id="8aeac" class="javax.swing.JLabel" binding="lbl_tipoCambio">
+                <constraints>
+                  <grid row="1" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="4" fill="0" indent="0" use-parent-layout="false"/>
+                </constraints>
+                <properties>
+                  <foreground color="-4473925"/>
+                  <labelFor value="a816c"/>
+                  <text value="Tipo de Cambio:"/>
+                </properties>
+              </component>
+              <component id="aa9f2" class="javax.swing.JLabel" binding="lbl_fechaHora">
+                <constraints>
+                  <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="4" fill="0" indent="0" use-parent-layout="false"/>
+                </constraints>
+                <properties>
+                  <foreground color="-4473925"/>
+                  <labelFor value="dce60"/>
+                  <text value="Fecha y Hora:"/>
+                </properties>
+              </component>
+              <component id="41599" class="javax.swing.JLabel" binding="lbl_infoCliente">
+                <constraints>
+                  <grid row="2" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="4" fill="0" indent="0" use-parent-layout="false"/>
+                </constraints>
+                <properties>
+                  <foreground color="-4473925"/>
+                  <labelFor value="cacb5"/>
+                  <text value="Informacion Cliente:"/>
+                </properties>
+              </component>
+              <component id="cacb5" class="javax.swing.JTextArea" binding="text_info">
+                <constraints>
+                  <grid row="2" column="1" row-span="1" col-span="1" vsize-policy="6" hsize-policy="6" anchor="0" fill="3" indent="0" use-parent-layout="false">
+                    <preferred-size width="150" height="50"/>
+                  </grid>
+                </constraints>
+                <properties>
+                  <background color="-1"/>
+                  <editable value="false"/>
+                  <foreground color="-14276309"/>
+                  <rows value="6"/>
+                  <text value="Mostrar Info"/>
+                </properties>
+              </component>
+              <component id="1f0a9" class="javax.swing.JLabel" binding="lbl_tabla">
+                <constraints>
+                  <grid row="3" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="4" fill="0" indent="0" use-parent-layout="false"/>
+                </constraints>
+                <properties>
+                  <foreground color="-4473925"/>
+                  <text value="Tabla de Amortizacion:"/>
+                </properties>
+              </component>
+              <component id="e3f75" class="javax.swing.JTable" binding="table_amortizacion">
+                <constraints>
+                  <grid row="3" column="1" row-span="1" col-span="1" vsize-policy="6" hsize-policy="6" anchor="0" fill="3" indent="0" use-parent-layout="false">
+                    <preferred-size width="150" height="50"/>
+                  </grid>
+                </constraints>
+                <properties>
+                  <background color="-1"/>
+                  <foreground color="-14276309"/>
+                </properties>
+              </component>
+              <component id="61c79" class="javax.swing.JButton" binding="btn_ok">
+                <constraints>
+                  <grid row="4" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="4" fill="0" indent="0" use-parent-layout="false">
+                    <minimum-size width="150" height="-1"/>
+                    <preferred-size width="150" height="-1"/>
+                    <maximum-size width="150" height="-1"/>
+                  </grid>
+                </constraints>
+                <properties>
+                  <background color="-14736860"/>
+                  <foreground color="-1315861"/>
+                  <text value="Nuevo"/>
+                </properties>
+              </component>
+            </children>
           </grid>
-        </constraints>
-        <properties/>
-      </component>
-      <component id="1403b" class="javax.swing.JTextField" binding="txt_plazo">
-        <constraints>
-          <grid row="2" column="4" row-span="1" col-span="5" vsize-policy="0" hsize-policy="6" anchor="8" fill="1" indent="0" use-parent-layout="false">
-            <preferred-size width="150" height="-1"/>
+          <vspacer id="98a43">
+            <constraints>
+              <grid row="1" column="0" row-span="1" col-span="1" vsize-policy="6" hsize-policy="1" anchor="0" fill="2" indent="0" use-parent-layout="false"/>
+            </constraints>
+          </vspacer>
+          <grid id="367dd" binding="registroPanel" layout-manager="GridLayoutManager" row-count="7" column-count="3" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
+            <margin top="0" left="0" bottom="0" right="0"/>
+            <constraints>
+              <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="3" hsize-policy="3" anchor="0" fill="3" indent="0" use-parent-layout="false"/>
+            </constraints>
+            <properties>
+              <background color="-14736860"/>
+            </properties>
+            <border type="etched" title="Registrar">
+              <title-color color="-1315861"/>
+            </border>
+            <children>
+              <component id="36c87" class="javax.swing.JLabel" binding="lbl_nombre">
+                <constraints>
+                  <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="3" hsize-policy="3" anchor="4" fill="0" indent="0" use-parent-layout="false"/>
+                </constraints>
+                <properties>
+                  <foreground color="-4473925"/>
+                  <labelFor value="fbfee"/>
+                  <text value="Nombre:"/>
+                </properties>
+              </component>
+              <component id="fbfee" class="javax.swing.JTextField" binding="txt_nombre">
+                <constraints>
+                  <grid row="0" column="1" row-span="1" col-span="1" vsize-policy="3" hsize-policy="3" anchor="8" fill="2" indent="0" use-parent-layout="false">
+                    <preferred-size width="150" height="-1"/>
+                    <maximum-size width="150" height="-1"/>
+                  </grid>
+                </constraints>
+                <properties>
+                  <background color="-1"/>
+                  <foreground color="-14276309"/>
+                </properties>
+              </component>
+              <component id="3cba4" class="javax.swing.JLabel" binding="lbl_moneda">
+                <constraints>
+                  <grid row="1" column="0" row-span="1" col-span="1" vsize-policy="3" hsize-policy="3" anchor="4" fill="0" indent="0" use-parent-layout="false"/>
+                </constraints>
+                <properties>
+                  <foreground color="-4473925"/>
+                  <labelFor value="43fb0"/>
+                  <text value="Moneda:"/>
+                </properties>
+              </component>
+              <component id="43fb0" class="javax.swing.JComboBox" binding="comBox_moneda">
+                <constraints>
+                  <grid row="1" column="1" row-span="1" col-span="2" vsize-policy="3" hsize-policy="3" anchor="8" fill="0" indent="0" use-parent-layout="false">
+                    <minimum-size width="150" height="-1"/>
+                    <preferred-size width="150" height="-1"/>
+                    <maximum-size width="150" height="-1"/>
+                  </grid>
+                </constraints>
+                <properties>
+                  <background color="-1"/>
+                  <foreground color="-14276309"/>
+                  <model>
+                    <item value="Colones"/>
+                    <item value="Dólares"/>
+                  </model>
+                </properties>
+                <clientProperties>
+                  <html.disable class="java.lang.Boolean" value="false"/>
+                </clientProperties>
+              </component>
+              <component id="b9e18" class="javax.swing.JLabel" binding="lbl_plazo">
+                <constraints>
+                  <grid row="3" column="0" row-span="1" col-span="1" vsize-policy="3" hsize-policy="3" anchor="4" fill="0" indent="0" use-parent-layout="false"/>
+                </constraints>
+                <properties>
+                  <foreground color="-4473925"/>
+                  <labelFor value="1403b"/>
+                  <text value="Plazo:"/>
+                </properties>
+              </component>
+              <component id="1403b" class="javax.swing.JTextField" binding="txt_plazo">
+                <constraints>
+                  <grid row="3" column="1" row-span="1" col-span="2" vsize-policy="3" hsize-policy="3" anchor="8" fill="0" indent="0" use-parent-layout="false">
+                    <minimum-size width="150" height="-1"/>
+                    <preferred-size width="150" height="-1"/>
+                    <maximum-size width="150" height="-1"/>
+                  </grid>
+                </constraints>
+                <properties>
+                  <background color="-1"/>
+                  <foreground color="-14276309"/>
+                </properties>
+              </component>
+              <component id="a5b27" class="javax.swing.JLabel" binding="lbl_sistemaAmortizacion">
+                <constraints>
+                  <grid row="5" column="0" row-span="1" col-span="1" vsize-policy="3" hsize-policy="3" anchor="4" fill="0" indent="0" use-parent-layout="false"/>
+                </constraints>
+                <properties>
+                  <foreground color="-4473925"/>
+                  <labelFor value="d0088"/>
+                  <text value="Sistema:"/>
+                </properties>
+              </component>
+              <component id="d0088" class="javax.swing.JComboBox" binding="comBox_sistemaAmortizacion">
+                <constraints>
+                  <grid row="5" column="1" row-span="1" col-span="2" vsize-policy="3" hsize-policy="3" anchor="8" fill="0" indent="0" use-parent-layout="false">
+                    <minimum-size width="150" height="-1"/>
+                    <preferred-size width="150" height="-1"/>
+                    <maximum-size width="150" height="-1"/>
+                  </grid>
+                </constraints>
+                <properties>
+                  <background color="-1"/>
+                  <foreground color="-14276309"/>
+                  <model>
+                    <item value="Sistema Francés"/>
+                    <item value="Sistema Alemán"/>
+                    <item value="Sistema Americano"/>
+                  </model>
+                </properties>
+              </component>
+              <component id="2bbad" class="javax.swing.JLabel" binding="lbl_monto">
+                <constraints>
+                  <grid row="2" column="0" row-span="1" col-span="1" vsize-policy="3" hsize-policy="3" anchor="4" fill="0" indent="0" use-parent-layout="false"/>
+                </constraints>
+                <properties>
+                  <foreground color="-4473925"/>
+                  <labelFor value="ed841"/>
+                  <text value="Monto:"/>
+                </properties>
+              </component>
+              <component id="ed841" class="javax.swing.JTextField" binding="txt_monto">
+                <constraints>
+                  <grid row="2" column="1" row-span="1" col-span="2" vsize-policy="3" hsize-policy="3" anchor="8" fill="0" indent="0" use-parent-layout="false">
+                    <minimum-size width="150" height="-1"/>
+                    <preferred-size width="150" height="-1"/>
+                    <maximum-size width="150" height="-1"/>
+                  </grid>
+                </constraints>
+                <properties>
+                  <background color="-1"/>
+                  <foreground color="-14276309"/>
+                </properties>
+              </component>
+              <component id="a6905" class="javax.swing.JLabel" binding="lbl_interes">
+                <constraints>
+                  <grid row="4" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="4" fill="0" indent="0" use-parent-layout="false"/>
+                </constraints>
+                <properties>
+                  <foreground color="-4473925"/>
+                  <text value="Interes:"/>
+                </properties>
+              </component>
+              <component id="bcba7" class="javax.swing.JTextField" binding="txt_interes">
+                <constraints>
+                  <grid row="4" column="1" row-span="1" col-span="2" vsize-policy="3" hsize-policy="3" anchor="8" fill="0" indent="0" use-parent-layout="false">
+                    <minimum-size width="150" height="-1"/>
+                    <preferred-size width="150" height="-1"/>
+                    <maximum-size width="150" height="-1"/>
+                  </grid>
+                </constraints>
+                <properties>
+                  <background color="-1"/>
+                  <foreground color="-14276309"/>
+                </properties>
+              </component>
+              <component id="7b18c" class="javax.swing.JButton" binding="btn_registrar">
+                <constraints>
+                  <grid row="6" column="1" row-span="1" col-span="2" vsize-policy="0" hsize-policy="3" anchor="8" fill="0" indent="0" use-parent-layout="false">
+                    <minimum-size width="150" height="-1"/>
+                    <preferred-size width="150" height="-1"/>
+                    <maximum-size width="150" height="-1"/>
+                  </grid>
+                </constraints>
+                <properties>
+                  <background color="-14736860"/>
+                  <foreground color="-1315861"/>
+                  <text value="Regristrar"/>
+                </properties>
+              </component>
+            </children>
           </grid>
-        </constraints>
-        <properties/>
-      </component>
-      <component id="d0088" class="javax.swing.JComboBox" binding="comBox_sistemaAmortizacion">
-        <constraints>
-          <grid row="3" column="4" row-span="1" col-span="5" vsize-policy="0" hsize-policy="2" anchor="8" fill="1" indent="0" use-parent-layout="false"/>
-        </constraints>
-        <properties>
-          <model>
-            <item value="Sistema Francés"/>
-            <item value="Sistema Alemán"/>
-            <item value="Sistema Americano"/>
-          </model>
-        </properties>
-      </component>
-      <component id="ed841" class="javax.swing.JTextField" binding="txt_monto">
-        <constraints>
-          <grid row="1" column="4" row-span="1" col-span="5" vsize-policy="0" hsize-policy="6" anchor="8" fill="1" indent="0" use-parent-layout="false">
-            <preferred-size width="150" height="-1"/>
-          </grid>
-        </constraints>
-        <properties/>
-      </component>
-      <component id="36c87" class="javax.swing.JLabel" binding="lbl_nombre">
-        <constraints>
-          <grid row="0" column="3" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="4" fill="0" indent="0" use-parent-layout="false"/>
-        </constraints>
-        <properties>
-          <labelFor value="fbfee"/>
-          <text value="Nombre:"/>
-        </properties>
-      </component>
-      <component id="2bbad" class="javax.swing.JLabel" binding="lbl_monto">
-        <constraints>
-          <grid row="1" column="3" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="4" fill="0" indent="0" use-parent-layout="false"/>
-        </constraints>
-        <properties>
-          <labelFor value="ed841"/>
-          <text value="Monto:"/>
-        </properties>
-      </component>
-      <component id="b9e18" class="javax.swing.JLabel" binding="lbl_plazo">
-        <constraints>
-          <grid row="2" column="3" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="4" fill="0" indent="0" use-parent-layout="false"/>
-        </constraints>
-        <properties>
-          <labelFor value="1403b"/>
-          <text value="Plazo:"/>
-        </properties>
-      </component>
-      <component id="43fb0" class="javax.swing.JComboBox" binding="comBox_moneda">
-        <constraints>
-          <grid row="4" column="4" row-span="1" col-span="5" vsize-policy="0" hsize-policy="2" anchor="8" fill="1" indent="0" use-parent-layout="false"/>
-        </constraints>
-        <properties>
-          <model>
-            <item value="Colones"/>
-            <item value="Dólares"/>
-          </model>
-        </properties>
-      </component>
-      <component id="3cba4" class="javax.swing.JLabel" binding="lbl_moneda">
-        <constraints>
-          <grid row="4" column="3" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="4" fill="0" indent="0" use-parent-layout="false"/>
-        </constraints>
-        <properties>
-          <labelFor value="43fb0"/>
-          <text value="Moneda:"/>
-        </properties>
-      </component>
+        </children>
+      </grid>
     </children>
   </grid>
 </form>
