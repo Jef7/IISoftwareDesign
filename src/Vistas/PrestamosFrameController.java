@@ -1,6 +1,5 @@
-package controller;
+package Vistas;
 
-import view.PrestamosFrame;
 import javax.swing.*;
 /**
  * Created by Jeffrey on 26/5/2016.
