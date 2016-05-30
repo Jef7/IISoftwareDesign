@@ -20,7 +20,7 @@ public class Main {
       if (args.length >= 1) {
         String arg0 = args[0];
         if (arg0.contentEquals("gui")) {
-          // TODO Iniciar GUI
+          System.out.println("GUI");
         }
       } else {
         FabricaControladoresConsola fabrica = new FabricaControladoresConsola();

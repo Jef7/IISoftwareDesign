@@ -23,8 +23,6 @@ public class ControladorConsola extends Controlador {
 
   private ControladorVistaDTO seleccionarTipoTablaAmortizacion() throws Exception {
     Vista consola = new Consola(new ValidacionTablasAmortizacion());
-    VistaControladorDTO entrada =  consola.obtenerDatosEntrada();
-
     int opcion = consola.seleccionarTipoAmortizacion();
 
     try {
