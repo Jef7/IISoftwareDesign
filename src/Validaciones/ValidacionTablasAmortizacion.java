@@ -3,10 +3,10 @@ package Validaciones;
 /**
  * Created by Esteban on 28/5/2016.
  */
-public class ValidacionDatosCliente implements Validacion {
+public class ValidacionTablasAmortizacion implements Validacion {
 
   // Clase Singleton
-  public ValidacionDatosCliente(){};
+  public ValidacionTablasAmortizacion(){};
 
   /**
    * Valida que el String ingresado sólo tenga letras alfanuméricas.

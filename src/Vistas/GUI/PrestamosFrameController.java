@@ -1,4 +1,4 @@
-package Vistas;
+package Vistas.GUI;
 
 import javax.swing.*;
 /**

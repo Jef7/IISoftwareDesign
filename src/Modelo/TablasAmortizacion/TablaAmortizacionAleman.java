@@ -1,13 +1,14 @@
 package Modelo.TablasAmortizacion;
 
+import Controladores.ControladorModeloDTO;
+
 /**
  * Created by Esteban on 28/5/2016.
  */
 public class TablaAmortizacionAleman extends TablaAmortizacion {
 
-  public TablaAmortizacionAleman(String nombreCliente, int plazoPrestamo,
-                                 double montoPrestamo, double tasaInteres) {
-    super(nombreCliente, plazoPrestamo, montoPrestamo, tasaInteres);
+  public TablaAmortizacionAleman(ControladorModeloDTO datosControlador) throws Exception {
+    super(datosControlador);
   }
 
   @Override
@@ -35,7 +36,12 @@ public class TablaAmortizacionAleman extends TablaAmortizacion {
   }
 
   @Override
-  public TablaAmortizacionDTO generarInforme() {
-    return super.generarInforme("Alemán");
+  public TablaAmortizacionDTO generarInforme() throws Exception{
+    return super.generarInforme("Alemán", 1);
+  }
+
+  @Override
+  public TablaAmortizacionDTO generarInforme(double cambioMoneda) throws Exception{
+    return super.generarInforme("Alemán", cambioMoneda);
   }
 }

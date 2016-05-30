@@ -1,6 +1,9 @@
 package Modelo.TablasAmortizacion;
 
+import java.security.InvalidParameterException;
 import java.util.ArrayList;
+
+import Controladores.ControladorModeloDTO;
 
 
 /**
@@ -13,12 +16,11 @@ public abstract class TablaAmortizacion {
   protected double tasaInteres;
   protected ArrayList<Cuota> tablaCuotas;
 
-  protected TablaAmortizacion(String nombreCliente, int plazoPrestamo,
-                              double montoPrestamo, double tasaInteres) {
-    this.nombreCliente = nombreCliente;
-    this.plazoPrestamo = plazoPrestamo;
-    this.montoPrestamo = montoPrestamo;
-    this.tasaInteres = tasaInteres;
+  protected TablaAmortizacion(ControladorModeloDTO datosControlador) throws Exception {
+    this.nombreCliente = datosControlador.getNombreCliente();
+    this.plazoPrestamo = datosControlador.getPlazoPrestamo();
+    this.montoPrestamo = datosControlador.getMontoPrestamo();
+    this.tasaInteres = datosControlador.getTasaInteres();
     this.tablaCuotas = generarTablaCuotas();
   }
 
@@ -28,9 +30,11 @@ public abstract class TablaAmortizacion {
 
   protected abstract double calcularInteresCuota(int numeroCuota);
 
-  public abstract TablaAmortizacionDTO generarInforme();
+  public abstract TablaAmortizacionDTO generarInforme() throws Exception;
 
-  Cuota generarCuota(int numeroCuota) throws RuntimeException {
+  public abstract TablaAmortizacionDTO generarInforme(double cambioMoneda) throws Exception;
+
+  Cuota generarCuota(int numeroCuota) throws Exception {
     double amortizacionCuota = calcularAmortizacionCuota(numeroCuota);
     double interesCuota = calcularInteresCuota(numeroCuota);
 
@@ -40,11 +44,11 @@ public abstract class TablaAmortizacion {
     if ((totalCuota) == (amortizacionCuota + interesCuota)) {
       return new Cuota(numeroCuota, deudaInicial, amortizacionCuota, interesCuota);
     } else {
-      throw new RuntimeException("ERROR calculo");
+      throw new RuntimeException("El cálculo de la cuota no es preciso.");
     }
   }
 
-  ArrayList<Cuota> generarTablaCuotas() {
+  ArrayList<Cuota> generarTablaCuotas() throws Exception {
     ArrayList<Cuota> nuevaTabla = new ArrayList<>();
 
     for (int numeroCuota = 1; numeroCuota <= plazoPrestamo; numeroCuota++) {
@@ -53,10 +57,19 @@ public abstract class TablaAmortizacion {
     return nuevaTabla;
   }
 
-  TablaAmortizacionDTO generarInforme(String subTipo) {
-    TablaAmortizacionDTO nuevoDTO = new TablaAmortizacionDTO(nombreCliente, plazoPrestamo,
-        montoPrestamo, tasaInteres);
+  protected TablaAmortizacionDTO generarInforme(String subTipo, double cambioMoneda)
+      throws Exception {
+    TablaAmortizacionDTO nuevoDTO = new TablaAmortizacionDTO();
+
+    if (cambioMoneda <= 0) {
+      throw new InvalidParameterException("Tipo de cambio ingresado es cero.");
+    }
+
     nuevoDTO.tipo = subTipo;
+    nuevoDTO.nombreCliente = this.nombreCliente;
+    nuevoDTO.montoPrestamo = this.montoPrestamo;
+    nuevoDTO.plazoPrestamo = this.plazoPrestamo;
+    nuevoDTO.tasaInteres = this.tasaInteres;
 
     double totalAmortizacionCuotas = 0;
     double totalInteresCuotas = 0;
@@ -64,11 +77,13 @@ public abstract class TablaAmortizacion {
 
     if (tablaCuotas != null) {
       for (Cuota cuota : tablaCuotas) {
-        totalAmortizacionCuotas += cuota.getMontoAmortizacion();
-        totalInteresCuotas += cuota.getMontoInteres();
-        totalRentaCuotas += cuota.getTotalCuota();
+        totalAmortizacionCuotas += cuota.getMontoAmortizacion() / cambioMoneda;
+        totalInteresCuotas += cuota.getMontoInteres() / cambioMoneda;
+        totalRentaCuotas += cuota.getTotalCuota() / cambioMoneda;
 
-        String[] datosCuota = cuota.toString().split("\\t");
+        String[] datosCuota = (cambioMoneda == 1)?
+            cuota.toString().split("\\t") : cuota.toString(cambioMoneda).split("\\t");
+
         nuevoDTO.tablaCuotas.add(datosCuota);
       }
 

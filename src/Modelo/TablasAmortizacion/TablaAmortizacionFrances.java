@@ -1,12 +1,13 @@
 package Modelo.TablasAmortizacion;
 
+import Controladores.ControladorModeloDTO;
+
 /**
  * Created by Esteban on 28/5/2016.
  */
 public class TablaAmortizacionFrances extends TablaAmortizacion {
-  protected TablaAmortizacionFrances(String nombreCliente, int plazoPrestamo,
-                                     double montoPrestamo, double tasaInteres) {
-    super(nombreCliente, plazoPrestamo, montoPrestamo, tasaInteres);
+  public TablaAmortizacionFrances(ControladorModeloDTO datosControlador) throws Exception {
+    super(datosControlador);
   }
 
   //TODO Implementar cálculos de cuotas (amortización, interés, total)
@@ -27,7 +28,12 @@ public class TablaAmortizacionFrances extends TablaAmortizacion {
   }
 
   @Override
-  public TablaAmortizacionDTO generarInforme() {
-    return super.generarInforme("Francés");
+  public TablaAmortizacionDTO generarInforme() throws Exception{
+    return super.generarInforme("Francés", 1);
+  }
+
+  @Override
+  public TablaAmortizacionDTO generarInforme(double cambioMoneda) throws Exception{
+    return super.generarInforme("Francés", cambioMoneda);
   }
 }

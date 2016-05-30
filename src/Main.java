@@ -1,8 +1,5 @@
 //import Vistas.PrestamosFrameController;
 
-import Modelo.TablasAmortizacion.TablaAmortizacion;
-import Modelo.TablasAmortizacion.TablaAmortizacionAleman;
-
 /**
  * Created by Jeffrey on 26/5/2016.
  */
@@ -13,11 +10,6 @@ public class Main {
 //        //lo muestro
 //        prestamosFrameController.showPrestamosFrame();
 //    }
-
-      TablaAmortizacion prueba = new TablaAmortizacionAleman("Ejemplo", 5, 1000000, 0.15);
-      prueba.generarInforme();
-
-      System.out.println("READY");
 
     }
 }
