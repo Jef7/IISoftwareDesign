@@ -16,12 +16,13 @@ public class ControladorConsola extends Controlador {
   }
 
   @Override
-  public ControladorVistaDTO reporteNuevaTablaAmortizacionAleman() {
+  public ControladorVistaDTO reporteNuevaTablaAmortizacionAleman() throws Exception {
     Vista consola = new Consola(new ValidacionTablasAmortizacion());
     VistaControladorDTO entrada = consola.obtenerDatosEntrada();
 
     try {
       ControladorVistaDTO resultado = super.reporteNuevaTablaAmortizacionAleman(entrada);
+      consola.mostrarResultado(resultado);
       return resultado;
     } catch (Exception e){
       return null;
@@ -29,7 +30,7 @@ public class ControladorConsola extends Controlador {
   }
 
   @Override
-  public ControladorVistaDTO reporteNuevaTablaAmortizacionAmericano() {
+  public ControladorVistaDTO reporteNuevaTablaAmortizacionAmericano() throws Exception {
     Vista consola = new Consola(new ValidacionTablasAmortizacion());
     VistaControladorDTO entrada = consola.obtenerDatosEntrada();
 
@@ -41,7 +42,7 @@ public class ControladorConsola extends Controlador {
   }
 
   @Override
-  public ControladorVistaDTO reporteNuevaTablaAmortizacionFrances() {
+  public ControladorVistaDTO reporteNuevaTablaAmortizacionFrances() throws Exception {
     Vista consola = new Consola(new ValidacionTablasAmortizacion());
     VistaControladorDTO entrada = consola.obtenerDatosEntrada();
 

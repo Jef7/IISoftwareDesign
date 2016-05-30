@@ -78,7 +78,7 @@ public abstract class Controlador {
 
     // TODO Incorporar consulta moneda externa.
     if (consultaCliente.getNombreMoneda().contentEquals("Colones")){
-      nuevaConsultaModelo.nombreMoneda = "Colones";
+      nuevaConsultaModelo.nombreMoneda = "0";
       nuevaConsultaModelo.cambioMoneda = 1;
     } else {
 //      nuevaConsultaModelo.nombreMoneda = ...
@@ -133,8 +133,6 @@ public abstract class Controlador {
     // consulta.nombreMoneda = ...
     // consulta.cambioMoneda = ...
 
-
-    TablaAmortizacionDTO tablaGenerada = fabricante.generarInfoNuevaTablaAmortizacion(consulta);
     return fabricante.generarInfoNuevaTablaAmortizacion(consulta);
   }
 
@@ -180,9 +178,9 @@ public abstract class Controlador {
     return generarReporteVista(infoTabla, consultaValida.getNombreMoneda());
   }
 
-  public abstract ControladorVistaDTO reporteNuevaTablaAmortizacionAleman();
-  public abstract ControladorVistaDTO reporteNuevaTablaAmortizacionAmericano();
-  public abstract ControladorVistaDTO reporteNuevaTablaAmortizacionFrances();
+  public abstract ControladorVistaDTO reporteNuevaTablaAmortizacionAleman() throws Exception;
+  public abstract ControladorVistaDTO reporteNuevaTablaAmortizacionAmericano() throws Exception;
+  public abstract ControladorVistaDTO reporteNuevaTablaAmortizacionFrances() throws Exception;
 
 
   //TODO Capa adaptador y web services

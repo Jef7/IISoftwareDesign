@@ -28,7 +28,7 @@ public class FabricaControladoresConsola implements FabricaControladores {
 
   @Override
   public void agregarRegistrosAControlador(Controlador controlador) throws IOException {
-    String fechaHoraSistema = new SimpleDateFormat("dd-MM-yyyy_hh:mm:ss a").format(new Date());
+    String fechaHoraSistema = new SimpleDateFormat("dd-MM-yyyy_hh mm ss a").format(new Date());
     String rutaArchivo = System.getProperty("user.dir") + "LogConsola_" + fechaHoraSistema;
 
     Registro registroXml = new FabricaRegistrosXml().nuevoRegistro(rutaArchivo);
