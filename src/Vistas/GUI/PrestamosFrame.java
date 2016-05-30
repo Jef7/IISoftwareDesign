@@ -187,4 +187,10 @@ public class PrestamosFrame extends JFrame implements Vista {
   public void mostrarResultado(ControladorVistaDTO resultado) {
     return;
   }
+
+  //TODO Implementar
+  @Override
+  public int seleccionarTipoAmortizacion() throws Exception {
+    return 0;
+  }
 }

@@ -9,6 +9,7 @@ public class VistaControladorDTO {
   double montoPrestamo;
   int plazoPrestamo;
   double tasaInteres;
+  int tipoAmortizacion;
 
   public VistaControladorDTO() {
     nombreCliente = "";
@@ -16,10 +17,7 @@ public class VistaControladorDTO {
     montoPrestamo = 0;
     plazoPrestamo = 0;
     tasaInteres = 0;
-  }
-
-  public String getNombreMoneda() {
-    return nombreMoneda;
+    tipoAmortizacion = 0;
   }
 
   public String getNombreCliente() {
@@ -56,5 +54,17 @@ public class VistaControladorDTO {
 
   public void setTasaInteres(double tasaInteres) {
     this.tasaInteres = tasaInteres;
+  }
+
+  public String getNombreMoneda() {
+    return nombreMoneda;
+  }
+
+  public int getTipoAmortizacion() {
+    return tipoAmortizacion;
+  }
+
+  public void setTipoAmortizacion(int tipoAmortizacion) {
+    this.tipoAmortizacion = tipoAmortizacion;
   }
 }

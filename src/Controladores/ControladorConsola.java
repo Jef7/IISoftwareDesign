@@ -13,6 +13,35 @@ public class ControladorConsola extends Controlador {
 
   protected ControladorConsola(Validacion validadorEntradas) throws Exception {
     super(validadorEntradas);
+
+    Vista consola = new Consola(new ValidacionTablasAmortizacion());
+    VistaControladorDTO entradaUsuario =  consola.obtenerDatosEntrada();
+
+    int tipoAmortizacion = consola.seleccionarTipoAmortizacion();
+
+  }
+
+  private ControladorVistaDTO seleccionarTipoTablaAmortizacion() throws Exception {
+    Vista consola = new Consola(new ValidacionTablasAmortizacion());
+    VistaControladorDTO entrada =  consola.obtenerDatosEntrada();
+
+    int opcion = consola.seleccionarTipoAmortizacion();
+
+    try {
+      switch (opcion) {
+        case 1:
+          return reporteNuevaTablaAmortizacionAleman();
+        case 2:
+          return reporteNuevaTablaAmortizacionAmericano();
+        case 3:
+          return reporteNuevaTablaAmortizacionFrances();
+        default:
+          break;
+      }
+    } catch (Exception e) {
+      throw e;
+    }
+    throw new RuntimeException("Operación cancelada");
   }
 
   @Override

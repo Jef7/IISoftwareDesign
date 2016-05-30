@@ -129,14 +129,6 @@ public class Consola implements Vista {
     }
   }
 
-  private int seleccionarTipoAmortizacion() throws Exception {
-    String str = "Seleccione el tipo de amortización que desea generar en la tabla:\n";
-    str += "1 - Alemán\n2 - Americano\n3 - Francés\n0 - Cancelar operación\n";
-
-    return ingresarOpcionNumerica(str, 3);
-
-  }
-
   private String ingresarTipoMoneda() throws Exception {
     String str = "Seleccione el tipo de moneda que desea ver en la tabla:\n";
     str += "1 - Colones\n2 - Dólares\n0 - Cancelar operación";
@@ -157,6 +149,14 @@ public class Consola implements Vista {
     }
   }
 
+  @Override
+  public int seleccionarTipoAmortizacion() throws Exception {
+    String str = "Seleccione el tipo de amortización que desea generar en la tabla:\n";
+    str += "1 - Alemán\n2 - Americano\n3 - Francés\n0 - Cancelar operación\n";
+
+    return ingresarOpcionNumerica(str, 3);
+
+  }
 
   @Override
   public VistaControladorDTO obtenerDatosEntrada() throws Exception {
@@ -167,45 +167,48 @@ public class Consola implements Vista {
       double nuevoMontoCliente = ingresarMonto();
       int nuevoPlazoPrestamo = ingresarPlazo();
       double nuevaTasaInteres = ingresarInteres();
+      int tipoAmortizacion = seleccionarTipoAmortizacion();
 
       datosEntrada.setNombreCliente(nuevoNombreCliente);
       datosEntrada.setMontoPrestamo(nuevoMontoCliente);
       datosEntrada.setPlazoPrestamo(nuevoPlazoPrestamo);
       datosEntrada.setTasaInteres(nuevaTasaInteres);
+      datosEntrada.setTipoAmortizacion(tipoAmortizacion);
 
       return datosEntrada;
     } catch (Exception e) {
       throw e;
     }
   }
-    @Override
-    public void mostrarResultado (ControladorVistaDTO resultado) throws Exception {
-      try {
-        // TODO Completar luego de agregar web services
-        String mensaje = "";
+
+  @Override
+  public void mostrarResultado(ControladorVistaDTO resultado) throws Exception {
+    try {
+      // TODO Completar luego de agregar web services
+      String mensaje = "";
 
       /* mensaje += "Tipo de cambio compra del BCCR para " + resultado.getTipoCambioExterno().get(0)
           + ": " + resultado.getTipoCambioExterno().get(1) + "\n"; */
 
-        mensaje += "Fecha y Hora (Chucky): " + resultado.getFechaHora() + "\n";
+      mensaje += "Fecha y Hora (Chucky): " + resultado.getFechaHora() + "\n";
 
-        mensaje += "Datos de la consulta:\n"
-            + "Nombre del cliente: " + resultado.getNombreCliente() + "\n"
-            + "Monto de préstamo otorgado: " + resultado.getMontoPrestamo() + " colones\n"
-            + "Plazo de préstamo otorgado: " + resultado.getPlazoPrestamo() + " años\n"
-            + "Tasa de interés anual: " + resultado.getTasaInteres() + "\n";
-        mensaje += "\n--- Tabla de Amortización ---\n\n";
-        mensaje += "Numero Cuota\tDeuda Actual\tCuota Amortización\tCuota Interés\tTotal Cuota\n";
+      mensaje += "Datos de la consulta:\n"
+          + "Nombre del cliente: " + resultado.getNombreCliente() + "\n"
+          + "Monto de préstamo otorgado: " + resultado.getMontoPrestamo() + " colones\n"
+          + "Plazo de préstamo otorgado: " + resultado.getPlazoPrestamo() + " años\n"
+          + "Tasa de interés anual: " + resultado.getTasaInteres() + "\n";
+      mensaje += "\n--- Tabla de Amortización ---\n\n";
+      mensaje += "Numero Cuota\tDeuda Actual\tCuota Amortización\tCuota Interés\tTotal Cuota\n";
 
-        for (String[] cuota : resultado.getTablaCuotas()) {
-          for (int cuenta = 0; cuenta < cuota.length; cuenta++) {
-            mensaje += cuota[cuenta] + (((cuenta + 1) < cuota.length) ? "\t\t\t" : "\n");
-          }
+      for (String[] cuota : resultado.getTablaCuotas()) {
+        for (int cuenta = 0; cuenta < cuota.length; cuenta++) {
+          mensaje += cuota[cuenta] + (((cuenta + 1) < cuota.length) ? "\t\t\t" : "\n");
         }
-
-        System.out.println(mensaje);
-      } catch (Exception e) {
-        throw e;
       }
+
+      System.out.println(mensaje);
+    } catch (Exception e) {
+      throw e;
     }
   }
+}

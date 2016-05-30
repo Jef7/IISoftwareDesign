@@ -8,4 +8,5 @@ import Controladores.ControladorVistaDTO;
 public interface Vista {
   VistaControladorDTO obtenerDatosEntrada() throws Exception;
   void mostrarResultado(ControladorVistaDTO resultado) throws Exception;
+  int seleccionarTipoAmortizacion() throws Exception;
 }
