@@ -1,8 +1,5 @@
-package Modelo.FabricasTablasAmortizacion;
+package Modelo.TablasAmortizacion;
 
-import Modelo.TablasAmortizacion.TablaAmortizacion;
-import Modelo.TablasAmortizacion.TablaAmortizacionAmericano;
-import Modelo.TablasAmortizacion.TablaAmortizacionDTO;
 import Validaciones.ValidacionTablasAmortizacion;
 
 /**

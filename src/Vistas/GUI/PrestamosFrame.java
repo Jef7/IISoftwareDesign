@@ -5,6 +5,7 @@ import java.awt.event.ActionListener;
 
 import javax.swing.*;
 
+import Controladores.ControladorVistaDTO;
 import Vistas.Vista;
 import Vistas.VistaControladorDTO;
 
@@ -13,8 +14,8 @@ import Vistas.VistaControladorDTO;
  */
 public class PrestamosFrame extends JFrame implements Vista {
   //definir el tamano de ventana
-  public static final int WIDTH = 1920;
-  public static final int HIGHT = 1080;
+  public static final int WIDTH = 1600;
+  public static final int HIGHT = 900;
   //paneles
   private JPanel mainPanel; //panel es la base
   private JPanel registroPanel; //panel hijo
@@ -179,5 +180,11 @@ public class PrestamosFrame extends JFrame implements Vista {
     consulta.setTasaInteres(Double.parseDouble(getTxt_interes().getText().trim()));
 
     return consulta;
+  }
+
+  //TODO Mostrar contenido del DTO resultado en GUI
+  @Override
+  public void mostrarResultado(ControladorVistaDTO resultado) {
+    return;
   }
 }

@@ -11,7 +11,7 @@ import Vistas.VistaControladorDTO;
  */
 public class ControladorConsola extends Controlador {
 
-  protected ControladorConsola(Validacion validadorEntradas) {
+  protected ControladorConsola(Validacion validadorEntradas) throws Exception {
     super(validadorEntradas);
   }
 

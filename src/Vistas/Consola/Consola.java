@@ -177,8 +177,6 @@ public class Consola implements Vista {
           mensaje += cuota[cuenta] + (((cuenta + 1) < cuota.length)? "\t" : "\n");
         }
       }
-
-
     } catch (Exception e){
       System.out.println("No pudo imprimirse el resultado.");
     }

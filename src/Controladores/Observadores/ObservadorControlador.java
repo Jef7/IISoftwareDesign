@@ -1,6 +1,7 @@
 package Controladores.Observadores;
 
 import java.io.IOException;
+import java.util.ArrayList;
 
 import Controladores.Controlador;
 import Modelo.Registros.Registro;
@@ -21,8 +22,9 @@ public class ObservadorControlador implements Observador {
   @Override
   public void actualizar() throws Exception {
     try {
-      String[] ultimaEntrada = controlador.getUltimaOperacion();
+      ArrayList<String> ultimaEntrada = controlador.getUltimaOperacion();
       registro.registrarEntrada(ultimaEntrada);
+
     } catch (IOException e) {
       System.out.println("Error al escribir en registro.");
       throw e;

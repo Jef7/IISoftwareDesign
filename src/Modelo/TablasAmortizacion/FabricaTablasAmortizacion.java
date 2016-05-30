@@ -1,7 +1,6 @@
-package Modelo.FabricasTablasAmortizacion;
+package Modelo.TablasAmortizacion;
 
 import Controladores.ControladorModeloDTO;
-import Modelo.TablasAmortizacion.TablaAmortizacionDTO;
 
 /**
  * Created by Esteban on 28/5/2016.

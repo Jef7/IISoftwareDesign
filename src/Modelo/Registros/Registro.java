@@ -2,6 +2,7 @@ package Modelo.Registros;
 
 import java.io.FileOutputStream;
 import java.io.IOException;
+import java.util.ArrayList;
 
 /**
  * Created by Esteban on 29/5/2016.
@@ -15,9 +16,18 @@ public abstract class Registro {
     this.streamArchivo = generarArchivo(rutaArchivo);
   }
 
-  protected abstract FileOutputStream generarArchivo(String rutaArchivo) throws IOException;
+  @Override
+  protected void finalize(){
+    try {
+      cerrarArchivo();
+    } catch (IOException e) {
+      System.out.println("No se pudo cerrar el archivo.");
+    }
+  }
 
-  public abstract boolean registrarEntrada(String[] contenido) throws IOException;
+  protected FileOutputStream generarArchivo(String rutaArchivo) throws IOException {
+    return new FileOutputStream(rutaArchivo);
+  }
 
   protected void cerrarArchivo() throws IOException {
     try {
@@ -27,5 +37,9 @@ public abstract class Registro {
       throw e;
     }
   }
+
+  public abstract boolean registrarEntrada(ArrayList<String> contenido) throws IOException;
+
+
 
 }

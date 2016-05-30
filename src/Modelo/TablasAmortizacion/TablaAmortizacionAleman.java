@@ -8,7 +8,7 @@ import Validaciones.Validacion;
  */
 public class TablaAmortizacionAleman extends TablaAmortizacion {
 
-  public TablaAmortizacionAleman(ControladorModeloDTO datosControlador, Validacion validadorDatos)
+  TablaAmortizacionAleman(ControladorModeloDTO datosControlador, Validacion validadorDatos)
       throws Exception {
     super(datosControlador, validadorDatos);
   }

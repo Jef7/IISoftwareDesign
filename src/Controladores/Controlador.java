@@ -4,10 +4,10 @@ import java.security.InvalidParameterException;
 import java.util.ArrayList;
 
 import Controladores.Observadores.Observador;
-import Modelo.FabricasTablasAmortizacion.FabricaTablasAmortizacion;
-import Modelo.FabricasTablasAmortizacion.FabricaTablasAmortizacionAleman;
-import Modelo.FabricasTablasAmortizacion.FabricaTablasAmortizacionAmericano;
-import Modelo.FabricasTablasAmortizacion.FabricaTablasAmortizacionFrances;
+import Modelo.TablasAmortizacion.FabricaTablasAmortizacion;
+import Modelo.TablasAmortizacion.FabricaTablasAmortizacionAleman;
+import Modelo.TablasAmortizacion.FabricaTablasAmortizacionAmericano;
+import Modelo.TablasAmortizacion.FabricaTablasAmortizacionFrances;
 import Modelo.TablasAmortizacion.TablaAmortizacionDTO;
 import Validaciones.Validacion;
 import Vistas.VistaControladorDTO;
@@ -26,6 +26,7 @@ public abstract class Controlador {
     this.ultimaOperacion = null;
   }
 
+
   protected void agregarObservador(Observador observador) {
     if (!observadores.contains(observador)) {
       observadores.add(observador);
@@ -42,7 +43,7 @@ public abstract class Controlador {
     return ultimaOperacion;
   }
 
-  protected void reportarGenerarTablaAmortizacion(ControladorModeloDTO entrada, String tipoTabla)
+  protected void reportarTablaCreada(ControladorModeloDTO entrada, String tipoTabla)
       throws Exception {
     try {
       ultimaOperacion = new ArrayList<>();
@@ -62,7 +63,6 @@ public abstract class Controlador {
       throw new Exception("No se pudo reportar la operación.");
     }
   }
-
 
   protected ControladorModeloDTO generarConsultaValidaModelo
       (VistaControladorDTO consultaCliente) throws Exception {
