@@ -11,15 +11,13 @@ public class TablaAmortizacionDTO {
   int plazoPrestamo;
   double montoPrestamo;
   double tasaInteres;
-  double cambioMoneda;
-  ArrayList<String[]> tablaCuotas;
 
+  ArrayList<String[]> tablaCuotas;
   TablaAmortizacionDTO() {
     this.nombreCliente = "";
     this.plazoPrestamo = 0;
     this.montoPrestamo = 0;
     this.tasaInteres = 0;
-    this.cambioMoneda = 1;
     this.tipo = "Amortización";
     this.tablaCuotas = new ArrayList<>();
   }

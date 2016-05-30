@@ -1,14 +1,16 @@
 package Modelo.TablasAmortizacion;
 
 import Controladores.ControladorModeloDTO;
+import Validaciones.Validacion;
 
 /**
  * Created by Esteban on 28/5/2016.
  */
 public class TablaAmortizacionAmericano extends TablaAmortizacion {
 
-  public TablaAmortizacionAmericano(ControladorModeloDTO datosControlador) throws Exception {
-    super(datosControlador);
+  public TablaAmortizacionAmericano(ControladorModeloDTO datosControlador,
+                                    Validacion validacionDatos) throws Exception {
+    super(datosControlador, validacionDatos);
   }
 
   @Override
@@ -32,12 +34,13 @@ public class TablaAmortizacionAmericano extends TablaAmortizacion {
   }
 
   @Override
-  public TablaAmortizacionDTO generarInforme() throws Exception{
+  public TablaAmortizacionDTO generarInforme() throws Exception {
     return super.generarInforme("Americano", 1);
   }
 
   @Override
-  public TablaAmortizacionDTO generarInforme(double cambioMoneda) throws Exception{
+  public TablaAmortizacionDTO generarInforme(double cambioMoneda)
+      throws Exception {
     return super.generarInforme("Americano", cambioMoneda);
   }
 }

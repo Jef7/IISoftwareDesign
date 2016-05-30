@@ -4,6 +4,7 @@ import java.security.InvalidParameterException;
 import java.util.ArrayList;
 
 import Controladores.ControladorModeloDTO;
+import Validaciones.Validacion;
 
 
 /**
@@ -15,13 +16,17 @@ public abstract class TablaAmortizacion {
   protected double montoPrestamo;
   protected double tasaInteres;
   protected ArrayList<Cuota> tablaCuotas;
+  Validacion validadorDatos;
 
-  protected TablaAmortizacion(ControladorModeloDTO datosControlador) throws Exception {
+
+  protected TablaAmortizacion(ControladorModeloDTO datosControlador, Validacion validadorDatos)
+      throws Exception {
     this.nombreCliente = datosControlador.getNombreCliente();
     this.plazoPrestamo = datosControlador.getPlazoPrestamo();
     this.montoPrestamo = datosControlador.getMontoPrestamo();
     this.tasaInteres = datosControlador.getTasaInteres();
     this.tablaCuotas = generarTablaCuotas();
+    this.validadorDatos = validadorDatos;
   }
 
   protected abstract double calcularTotalCuota(int numeroCuota);
@@ -32,7 +37,8 @@ public abstract class TablaAmortizacion {
 
   public abstract TablaAmortizacionDTO generarInforme() throws Exception;
 
-  public abstract TablaAmortizacionDTO generarInforme(double cambioMoneda) throws Exception;
+  public abstract TablaAmortizacionDTO generarInforme(double cambioMoneda)
+      throws Exception;
 
   Cuota generarCuota(int numeroCuota) throws Exception {
     double amortizacionCuota = calcularAmortizacionCuota(numeroCuota);
@@ -57,13 +63,13 @@ public abstract class TablaAmortizacion {
     return nuevaTabla;
   }
 
-  protected TablaAmortizacionDTO generarInforme(String subTipo, double cambioMoneda)
+  TablaAmortizacionDTO generarInforme(String subTipo, double cambioMoneda)
       throws Exception {
-    TablaAmortizacionDTO nuevoDTO = new TablaAmortizacionDTO();
-
-    if (cambioMoneda <= 0) {
-      throw new InvalidParameterException("Tipo de cambio ingresado es cero.");
+    if (!validadorDatos.validarDoublePositivo(cambioMoneda) || (cambioMoneda < 0)) {
+      throw new InvalidParameterException("El tipo de cambio debe ser mayor que cero.");
     }
+
+    TablaAmortizacionDTO nuevoDTO = new TablaAmortizacionDTO();
 
     nuevoDTO.tipo = subTipo;
     nuevoDTO.nombreCliente = this.nombreCliente;
@@ -95,6 +101,10 @@ public abstract class TablaAmortizacion {
       );
     }
     return nuevoDTO;
+  }
+
+  public TablaAmortizacionDTO generarInforme(ControladorModeloDTO consulta) throws Exception {
+    return generarInforme(consulta.getNombreMoneda(), consulta.getCambioMoneda());
   }
 
   public String getNombreCliente() {

@@ -18,7 +18,7 @@ import Vistas.VistaControladorDTO;
 public abstract class Controlador {
   ArrayList<Observador> observadores;
   Validacion validadorEntradas;
-  String[] ultimaOperacion;
+  ArrayList<String> ultimaOperacion;
 
   protected Controlador(Validacion validadorEntradas) {
     observadores = new ArrayList<>();
@@ -38,11 +38,33 @@ public abstract class Controlador {
     }
   }
 
-  public String[] getUltimaOperacion() {
+  public ArrayList<String> getUltimaOperacion() {
     return ultimaOperacion;
   }
 
-  protected ControladorModeloDTO generarConsultaHaciaModelo
+  protected void reportarGenerarTablaAmortizacion(ControladorModeloDTO entrada, String tipoTabla)
+      throws Exception {
+    try {
+      ultimaOperacion = new ArrayList<>();
+
+      ultimaOperacion.add("Operación:GenerarTablaAmortizacion");
+      ultimaOperacion.add("TipoAmortización:" + tipoTabla);
+      ultimaOperacion.add("NombreCliente:" + entrada.nombreMoneda);
+      ultimaOperacion.add("MontoPrestamo:" + String.format("%.2f", entrada.montoPrestamo));
+      ultimaOperacion.add("PlazoPrestamo:" + Integer.toString(entrada.plazoPrestamo));
+      ultimaOperacion.add("TasaInteres:" + String.format("%.2f", entrada.montoPrestamo));
+
+      // TODO Agregar fecha y hora de consulta (Chucky)
+//    ultimaOperacion.add("FechaHora:"+"");
+
+      notificarObservadores();
+    } catch (Exception e){
+      throw new Exception("No se pudo reportar la operación.");
+    }
+  }
+
+
+  protected ControladorModeloDTO generarConsultaValidaModelo
       (VistaControladorDTO consultaCliente) throws Exception {
     validarEntradas(consultaCliente);
 
@@ -52,6 +74,17 @@ public abstract class Controlador {
     nuevaConsultaModelo.montoPrestamo = consultaCliente.getMontoPrestamo();
     nuevaConsultaModelo.plazoPrestamo = consultaCliente.getPlazoPrestamo();
     nuevaConsultaModelo.tasaInteres = consultaCliente.getTasaInteres();
+
+
+    // TODO Incorporar consulta moneda externa.
+    if (consultaCliente.getNombreMoneda().contentEquals("Colones")){
+      nuevaConsultaModelo.nombreMoneda = "Colones";
+      nuevaConsultaModelo.cambioMoneda = 1;
+    } else {
+//      nuevaConsultaModelo.nombreMoneda = ...
+//      nuevaConsultaModelo.cambioMoneda = ...
+    }
+
 
     return nuevaConsultaModelo;
   }
@@ -71,25 +104,37 @@ public abstract class Controlador {
     }
   }
 
-  ControladorVistaDTO generarReporteVista(TablaAmortizacionDTO datosNuevaTabla)
+  ControladorVistaDTO generarReporteVista(TablaAmortizacionDTO datosNuevaTabla, String nombreMoneda)
       throws Exception {
-    // TODO Completar cuando se haya implementado adaptadores y web services.
     ControladorVistaDTO respuesta = new ControladorVistaDTO();
+
     respuesta.nombreCliente = datosNuevaTabla.getNombreCliente();
     respuesta.montoPrestamo = String.format("%.2f", datosNuevaTabla.getMontoPrestamo());
     respuesta.plazoPrestamo = Integer.toString(datosNuevaTabla.getPlazoPrestamo()) + " años";
     respuesta.tasaInteres = String.format("%.2f", (datosNuevaTabla.getTasaInteres() * 100)) + "%";
     respuesta.tablaCuotas.addAll(datosNuevaTabla.getTablaCuotas());
 
+    // TODO Completar cuando se haya implementado adaptadores y web services.
     //respuesta.fechaHora = ;
-    //respuesta.tipoCambio = ;
 
+    if (nombreMoneda.contentEquals("Colones")) {
+      // TODO Mostrar tipo de cambio en dólares para colones.
+//      respuesta.tipoCambio = ...
+//      respuesta.nombreMoneda = ...
+    }
     return respuesta;
   }
 
   TablaAmortizacionDTO generarInfoNuevaTablaAmortizacion(FabricaTablasAmortizacion fabricante,
                                                          ControladorModeloDTO consulta)
       throws Exception {
+    // TODO Completar cuando se haya implementado adaptadores y web services.
+
+    // consulta.nombreMoneda = ...
+    // consulta.cambioMoneda = ...
+
+
+    TablaAmortizacionDTO tablaGenerada = fabricante.generarInfoNuevaTablaAmortizacion(consulta);
     return fabricante.generarInfoNuevaTablaAmortizacion(consulta);
   }
 
@@ -98,12 +143,13 @@ public abstract class Controlador {
       throws Exception {
     validarEntradas(consultaCliente);
 
-    ControladorModeloDTO consultaValida = generarConsultaHaciaModelo(consultaCliente);
+    ControladorModeloDTO consultaValida = generarConsultaValidaModelo(consultaCliente);
     FabricaTablasAmortizacion fabricanteTabla = new FabricaTablasAmortizacionAleman();
 
     TablaAmortizacionDTO infoTabla = generarInfoNuevaTablaAmortizacion
         (fabricanteTabla, consultaValida);
-    return generarReporteVista(infoTabla);
+
+    return generarReporteVista(infoTabla, consultaValida.getNombreMoneda());
   }
 
   protected ControladorVistaDTO reporteNuevaTablaAmortizacionAmericano
@@ -111,12 +157,13 @@ public abstract class Controlador {
       throws Exception {
     validarEntradas(consultaCliente);
 
-    ControladorModeloDTO consultaValida = generarConsultaHaciaModelo(consultaCliente);
+    ControladorModeloDTO consultaValida = generarConsultaValidaModelo(consultaCliente);
     FabricaTablasAmortizacion fabricanteTabla = new FabricaTablasAmortizacionAmericano();
 
     TablaAmortizacionDTO infoTabla = generarInfoNuevaTablaAmortizacion
         (fabricanteTabla, consultaValida);
-    return generarReporteVista(infoTabla);
+
+    return generarReporteVista(infoTabla, consultaValida.getNombreMoneda());
   }
 
   protected ControladorVistaDTO reporteNuevaTablaAmortizacionFrances
@@ -124,12 +171,13 @@ public abstract class Controlador {
       throws Exception {
     validarEntradas(consultaCliente);
 
-    ControladorModeloDTO consultaValida = generarConsultaHaciaModelo(consultaCliente);
+    ControladorModeloDTO consultaValida = generarConsultaValidaModelo(consultaCliente);
     FabricaTablasAmortizacion fabricanteTabla = new FabricaTablasAmortizacionFrances();
 
     TablaAmortizacionDTO infoTabla = generarInfoNuevaTablaAmortizacion
         (fabricanteTabla, consultaValida);
-    return generarReporteVista(infoTabla);
+
+    return generarReporteVista(infoTabla, consultaValida.getNombreMoneda());
   }
 
   public abstract ControladorVistaDTO reporteNuevaTablaAmortizacionAleman();
@@ -137,12 +185,12 @@ public abstract class Controlador {
   public abstract ControladorVistaDTO reporteNuevaTablaAmortizacionFrances();
 
 
-  //TODO Capa adaptador
-//  public FechaHoraDTO consultarFechaHora(){
+  //TODO Capa adaptador y web services
+//  public FechaHoraDTO obtenerFechaHora(){
 //
 //  }
 //
-//  public TipoCambioDTO consultarTipoCambio(){
+//  public TipoCambioDTO obtenerTipoCambio(String nombreMoneda){
 //
 //  }
 }

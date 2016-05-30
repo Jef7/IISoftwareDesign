@@ -3,6 +3,7 @@ package Modelo.FabricasTablasAmortizacion;
 import Modelo.TablasAmortizacion.TablaAmortizacion;
 import Modelo.TablasAmortizacion.TablaAmortizacionDTO;
 import Modelo.TablasAmortizacion.TablaAmortizacionFrances;
+import Validaciones.ValidacionTablasAmortizacion;
 
 /**
  * Created by Esteban on 28/5/2016.
@@ -13,8 +14,9 @@ public class FabricaTablasAmortizacionFrances implements FabricaTablasAmortizaci
   public TablaAmortizacionDTO generarInfoNuevaTablaAmortizacion
       (Controladores.ControladorModeloDTO datos) throws Exception {
     try {
-      TablaAmortizacion nuevaTabla = new TablaAmortizacionFrances(datos);
-      return nuevaTabla.generarInforme();
+      TablaAmortizacion nuevaTabla = new
+          TablaAmortizacionFrances(datos, new ValidacionTablasAmortizacion());
+      return nuevaTabla.generarInforme(datos);
     } catch (Exception e){
       throw e;
     }
