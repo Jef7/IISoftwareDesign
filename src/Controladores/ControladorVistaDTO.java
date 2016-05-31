@@ -13,6 +13,7 @@ public class ControladorVistaDTO {
   String fechaHora;
   String nombreMoneda;
   String tipoCambio;
+  String tipoAmortizacion;
 
 
   ArrayList<String[]> tipoCambioExterno;   // Tipo de cambio según Web Service. Dólar por defecto.
@@ -26,6 +27,7 @@ public class ControladorVistaDTO {
     this.fechaHora = "";
     this.nombreMoneda = "";
     this.tipoCambio = "";
+    this.tipoAmortizacion = "";
     this.tipoCambioExterno = new ArrayList<>();
     this.tablaCuotas = new ArrayList<>();
   }
@@ -57,6 +59,8 @@ public class ControladorVistaDTO {
   public String getNombreMoneda() {
     return nombreMoneda;
   }
+
+  public String getTipoAmortizacion() { return tipoAmortizacion; }
 
   public ArrayList<String[]> getTipoCambioExterno() {
     return tipoCambioExterno;
