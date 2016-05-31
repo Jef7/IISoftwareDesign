@@ -10,6 +10,7 @@ import Modelo.TablasAmortizacion.FabricaTablasAmortizacionAmericano;
 import Modelo.TablasAmortizacion.FabricaTablasAmortizacionFrances;
 import Modelo.TablasAmortizacion.TablaAmortizacionDTO;
 import Validaciones.Validacion;
+import Vistas.Vista;
 import Vistas.VistaControladorDTO;
 
 /**
@@ -19,6 +20,7 @@ public abstract class Controlador {
   ArrayList<Observador> observadores;
   Validacion validadorEntradas;
   ArrayList<String> ultimaOperacion;
+  Vista vista;
 
   protected Controlador(Validacion validadorEntradas) {
     observadores = new ArrayList<>();
@@ -136,6 +138,10 @@ public abstract class Controlador {
     return fabricante.generarInfoNuevaTablaAmortizacion(consulta);
   }
 
+
+  public abstract void generarNuevaTablaAmortizacion() throws Exception;
+
+
   protected ControladorVistaDTO reporteNuevaTablaAmortizacionAleman
       (VistaControladorDTO consultaCliente)
       throws Exception {
@@ -177,10 +183,6 @@ public abstract class Controlador {
 
     return generarReporteVista(infoTabla, consultaValida.getNombreMoneda());
   }
-
-  public abstract ControladorVistaDTO reporteNuevaTablaAmortizacionAleman() throws Exception;
-  public abstract ControladorVistaDTO reporteNuevaTablaAmortizacionAmericano() throws Exception;
-  public abstract ControladorVistaDTO reporteNuevaTablaAmortizacionFrances() throws Exception;
 
 
   //TODO Capa adaptador y web services

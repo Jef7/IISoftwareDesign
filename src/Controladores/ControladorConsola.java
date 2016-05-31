@@ -1,9 +1,7 @@
 package Controladores;
 
 import Validaciones.Validacion;
-import Validaciones.ValidacionTablasAmortizacion;
 import Vistas.Consola.Consola;
-import Vistas.Vista;
 import Vistas.VistaControladorDTO;
 
 /**
@@ -11,72 +9,41 @@ import Vistas.VistaControladorDTO;
  */
 public class ControladorConsola extends Controlador {
 
+
   protected ControladorConsola(Validacion validadorEntradas) throws Exception {
     super(validadorEntradas);
-
-    Vista consola = new Consola(new ValidacionTablasAmortizacion());
-    VistaControladorDTO entradaUsuario =  consola.obtenerDatosEntrada();
-
-    int tipoAmortizacion = consola.seleccionarTipoAmortizacion();
-
-  }
-
-  private ControladorVistaDTO seleccionarTipoTablaAmortizacion() throws Exception {
-    Vista consola = new Consola(new ValidacionTablasAmortizacion());
-    int opcion = consola.seleccionarTipoAmortizacion();
-
-    try {
-      switch (opcion) {
-        case 1:
-          return reporteNuevaTablaAmortizacionAleman();
-        case 2:
-          return reporteNuevaTablaAmortizacionAmericano();
-        case 3:
-          return reporteNuevaTablaAmortizacionFrances();
-        default:
-          break;
-      }
-    } catch (Exception e) {
-      throw e;
-    }
-    throw new RuntimeException("Operación cancelada");
+    vista = new Consola(validadorEntradas);
   }
 
   @Override
-  public ControladorVistaDTO reporteNuevaTablaAmortizacionAleman() throws Exception {
-    Vista consola = new Consola(new ValidacionTablasAmortizacion());
-    VistaControladorDTO entrada = consola.obtenerDatosEntrada();
+  public void generarNuevaTablaAmortizacion() throws Exception {
+    VistaControladorDTO entrada = vista.obtenerDatosEntrada();
+    int opcion = vista.seleccionarTipoAmortizacion();
 
-    try {
-      ControladorVistaDTO resultado = super.reporteNuevaTablaAmortizacionAleman(entrada);
-      consola.mostrarResultado(resultado);
-      return resultado;
-    } catch (Exception e){
-      return null;
+    ControladorVistaDTO resultado = null;
+
+    switch(opcion){
+      case 1:
+        resultado = reporteNuevaTablaAmortizacionAleman(entrada);
+        vista.mostrarResultado(resultado);
+        break;
+      case 2:
+        resultado = reporteNuevaTablaAmortizacionAmericano(entrada);
+        vista.mostrarResultado(resultado);
+        break;
+      case 3:
+        resultado = reporteNuevaTablaAmortizacionFrances(entrada);
+        vista.mostrarResultado(resultado);
+        break;
+      case 0:
+        System.out.println("Operación cancelada.");
+        return;
+      default:
+        throw new RuntimeException("Operación inválida.");
     }
-  }
 
-  @Override
-  public ControladorVistaDTO reporteNuevaTablaAmortizacionAmericano() throws Exception {
-    Vista consola = new Consola(new ValidacionTablasAmortizacion());
-    VistaControladorDTO entrada = consola.obtenerDatosEntrada();
-
-    try {
-      return super.reporteNuevaTablaAmortizacionAmericano(entrada);
-    } catch (Exception e){
-      return null;
-    }
-  }
-
-  @Override
-  public ControladorVistaDTO reporteNuevaTablaAmortizacionFrances() throws Exception {
-    Vista consola = new Consola(new ValidacionTablasAmortizacion());
-    VistaControladorDTO entrada = consola.obtenerDatosEntrada();
-
-    try {
-      return super.reporteNuevaTablaAmortizacionFrances(entrada);
-    } catch (Exception e){
-      return null;
+    if (resultado != null) {
+      vista.mostrarResultado(resultado);
     }
   }
 }

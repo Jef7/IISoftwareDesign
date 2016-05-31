@@ -1,6 +1,5 @@
 package Modelo.Registros;
 
-import java.io.FileOutputStream;
 import java.io.IOException;
 import java.util.ArrayList;
 
@@ -11,11 +10,6 @@ public class RegistroCsv extends Registro {
   // TODO Generar archivo CSV
   public RegistroCsv(String rutaArchivo) throws IOException {
     super(rutaArchivo);
-  }
-
-  @Override
-  protected FileOutputStream generarArchivo(String rutaArchivo) throws IOException {
-    return new FileOutputStream(rutaArchivo);
   }
 
   @Override
