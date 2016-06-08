@@ -15,7 +15,7 @@ public class ValidacionTablasAmortizacion implements Validacion {
    */
   @Override
   public boolean contieneSoloLetras(String entrada) {
-    return entrada.matches("^[A-Za-z]+$");
+    return entrada.matches("^[A-Za-z\\s]+$");
   }
 
   /**

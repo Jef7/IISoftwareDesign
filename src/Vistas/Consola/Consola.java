@@ -197,6 +197,7 @@ public class Consola implements Vista {
           + "Monto de préstamo otorgado: " + resultado.getMontoPrestamo() + " colones\n"
           + "Plazo de préstamo otorgado: " + resultado.getPlazoPrestamo() + " años\n"
           + "Tasa de interés anual: " + resultado.getTasaInteres() + "\n";
+
       mensaje += "\n--- Tabla de Amortización ---\n\n";
       mensaje += "Numero Cuota\tDeuda Actual\tCuota Amortización\tCuota Interés\tTotal Cuota\n";
 

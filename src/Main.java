@@ -1,10 +1,7 @@
 //import Vistas.PrestamosFrameController;
 
 import Controladores.Controlador;
-import Controladores.ControladorGUI;
 import Controladores.FabricaControladoresConsola;
-import Validaciones.Validacion;
-import Vistas.GUI.PrestamosFrame;
 
 /**
  * Created by Jeffrey on 26/5/2016.
@@ -25,13 +22,14 @@ public class Main {
         if (arg0.contentEquals("gui")) {
             //gui
             //instancio un nuevo controller del prestamosFrame
-            Controlador prestamosFrameController = new ControladorGUI();
+            // Controlador prestamosFrameController = new ControladorGUI();
             //lo muestro
             //prestamosFrameController.showPrestamosFrame();
         }
       } else {
         FabricaControladoresConsola fabrica = new FabricaControladoresConsola();
         controlador = fabrica.crearNuevoControlador();
+        controlador.generarNuevaTablaAmortizacion();
       }
     } catch (Exception e) {
       e.printStackTrace();

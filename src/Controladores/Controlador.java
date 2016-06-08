@@ -112,8 +112,9 @@ public abstract class Controlador {
 
     respuesta.nombreCliente = datosNuevaTabla.getNombreCliente();
     respuesta.montoPrestamo = String.format("%.2f", datosNuevaTabla.getMontoPrestamo());
-    respuesta.plazoPrestamo = Integer.toString(datosNuevaTabla.getPlazoPrestamo()) + " años";
+    respuesta.plazoPrestamo = Integer.toString(datosNuevaTabla.getPlazoPrestamo());
     respuesta.tasaInteres = String.format("%.2f", (datosNuevaTabla.getTasaInteres() * 100)) + "%";
+    respuesta.tipoAmortizacion = datosNuevaTabla.getTipoAmortizacion();
     respuesta.tablaCuotas.addAll(datosNuevaTabla.getTablaCuotas());
 
     // TODO Completar cuando se haya implementado adaptadores y web services.

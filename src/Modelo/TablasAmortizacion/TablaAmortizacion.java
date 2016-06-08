@@ -40,18 +40,12 @@ public abstract class TablaAmortizacion {
   public abstract TablaAmortizacionDTO generarInforme(double cambioMoneda)
       throws Exception;
 
-  Cuota generarCuota(int numeroCuota) throws Exception {
+  Cuota generarCuota(int numeroCuota) {
     double amortizacionCuota = calcularAmortizacionCuota(numeroCuota);
     double interesCuota = calcularInteresCuota(numeroCuota);
-
-    double totalCuota = calcularTotalCuota(numeroCuota);
     double deudaInicial = montoPrestamo - (amortizacionCuota * (numeroCuota - 1));
 
-    if ((totalCuota) == (amortizacionCuota + interesCuota)) {
-      return new Cuota(numeroCuota, deudaInicial, amortizacionCuota, interesCuota);
-    } else {
-      throw new RuntimeException("El cálculo de la cuota no es preciso.");
-    }
+    return new Cuota(numeroCuota, deudaInicial, amortizacionCuota, interesCuota);
   }
 
   ArrayList<Cuota> generarTablaCuotas() throws Exception {
@@ -71,7 +65,7 @@ public abstract class TablaAmortizacion {
 
     TablaAmortizacionDTO nuevoDTO = new TablaAmortizacionDTO();
 
-    nuevoDTO.tipo = subTipo;
+    nuevoDTO.tipoAmortizacion = subTipo;
     nuevoDTO.nombreCliente = this.nombreCliente;
     nuevoDTO.montoPrestamo = this.montoPrestamo;
     nuevoDTO.plazoPrestamo = this.plazoPrestamo;

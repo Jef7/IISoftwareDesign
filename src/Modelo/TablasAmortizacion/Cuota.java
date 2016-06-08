@@ -49,8 +49,8 @@ class Cuota {
     String strMontoInteres = String.format("%.2f", montoInteres);
     String strTotalCuota = String.format("%.2f", getTotalCuota());
 
-    return (strNumeroCuota + "\t" + strSaldoActual + "\t" + strMontoInteres + "\t" +
-        strMontoAmortizacion + "\t" + strTotalCuota);
+    return (strNumeroCuota + "\t" + strSaldoActual + "\t" + strMontoAmortizacion + "\t" +
+        strMontoInteres + "\t" + strTotalCuota);
   }
 
   public String toString(double cambioMoneda) throws Exception {
@@ -66,7 +66,7 @@ class Cuota {
     String strMontoInteres = String.format("%.2f", montoInteres / cambioMoneda);
     String strTotalCuota = String.format("%.2f", getTotalCuota() / cambioMoneda);
 
-    return (strNumeroCuota + "\t" + strSaldoActual + "\t" + strMontoInteres + "\t" +
-        strMontoAmortizacion + "\t" + strTotalCuota);
+    return (strNumeroCuota + "\t" + strSaldoActual + "\t" + strMontoAmortizacion + "\t" +
+        strMontoInteres + "\t" + strTotalCuota);
   }
 }

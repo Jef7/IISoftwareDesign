@@ -2,12 +2,8 @@ package Controladores;
 
 import javax.swing.*;
 
-import Validaciones.Validacion;
 import Validaciones.ValidacionTablasAmortizacion;
-import Vistas.Consola.Consola;
 import Vistas.GUI.PrestamosFrame;
-import Vistas.Vista;
-import Vistas.VistaControladorDTO;
 
 /**
  * Created by Esteban on 30/5/2016.
@@ -35,26 +31,26 @@ public class ControladorGUI extends Controlador {
     private JTextArea text_info;
     private JTextArea text_tabla;
 
-  public ControladorGUI() {
+  protected ControladorGUI() {
     super(new ValidacionTablasAmortizacion());
     this.prestamosFrame = new PrestamosFrame(this);
     this.mostrarPantalla();
   }
 
 
-    //muestra la ventana
-    private void showPrestamosFrame(){
-        prestamosFrame.setVisible(true);
-        prestamosFrame.setExtendedState(JFrame.MAXIMIZED_BOTH);//para poner la venta en FULLSCREEN
-    }
+  //muestra la ventana
+  private void showPrestamosFrame(){
+      prestamosFrame.setVisible(true);
+      prestamosFrame.setExtendedState(JFrame.MAXIMIZED_BOTH);//para poner la venta en FULLSCREEN
+  }
 
   private void mostrarPantalla() {
       prestamosFrame.setVisible(true);
       prestamosFrame.setExtendedState(JFrame.MAXIMIZED_BOTH);
   }
 
-    @Override
-    public void generarNuevaTablaAmortizacion() throws Exception {
+  @Override
+  public void generarNuevaTablaAmortizacion() throws Exception {
 
-    }
+  }
 }

@@ -6,7 +6,7 @@ import java.util.ArrayList;
  * Created by Esteban on 28/5/2016.
  */
 public class TablaAmortizacionDTO {
-  String tipo;
+  String tipoAmortizacion;
   String nombreCliente;
   int plazoPrestamo;
   double montoPrestamo;
@@ -18,7 +18,7 @@ public class TablaAmortizacionDTO {
     this.plazoPrestamo = 0;
     this.montoPrestamo = 0;
     this.tasaInteres = 0;
-    this.tipo = "Amortización";
+    this.tipoAmortizacion = "Amortización";
     this.tablaCuotas = new ArrayList<>();
   }
 
@@ -26,8 +26,8 @@ public class TablaAmortizacionDTO {
     return nombreCliente;
   }
 
-  public String getTipo(){
-    return tipo;
+  public String getTipoAmortizacion(){
+    return tipoAmortizacion;
   }
 
   public int getPlazoPrestamo() {

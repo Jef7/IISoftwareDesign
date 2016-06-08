@@ -18,22 +18,18 @@ public class ControladorConsola extends Controlador {
   @Override
   public void generarNuevaTablaAmortizacion() throws Exception {
     VistaControladorDTO entrada = vista.obtenerDatosEntrada();
-    int opcion = vista.seleccionarTipoAmortizacion();
 
     ControladorVistaDTO resultado = null;
 
-    switch(opcion){
+    switch(entrada.getTipoAmortizacion()){
       case 1:
         resultado = reporteNuevaTablaAmortizacionAleman(entrada);
-        vista.mostrarResultado(resultado);
         break;
       case 2:
         resultado = reporteNuevaTablaAmortizacionAmericano(entrada);
-        vista.mostrarResultado(resultado);
         break;
       case 3:
         resultado = reporteNuevaTablaAmortizacionFrances(entrada);
-        vista.mostrarResultado(resultado);
         break;
       case 0:
         System.out.println("Operación cancelada.");
