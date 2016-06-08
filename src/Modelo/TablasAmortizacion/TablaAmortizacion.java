@@ -43,13 +43,23 @@ public abstract class TablaAmortizacion {
   Cuota generarCuota(int numeroCuota) {
     double amortizacionCuota = calcularAmortizacionCuota(numeroCuota);
     double interesCuota = calcularInteresCuota(numeroCuota);
-    double deudaInicial = montoPrestamo - (amortizacionCuota * (numeroCuota - 1));
+
+
+    double deudaInicial = montoPrestamo;
+    if (!tablaCuotas.isEmpty() && (numeroCuota > 1)){
+      Cuota ultimaCuota = tablaCuotas.get(tablaCuotas.size() - 1);
+      deudaInicial = ultimaCuota.getSaldoActual() - ultimaCuota.getMontoAmortizacion();
+    }
 
     return new Cuota(numeroCuota, deudaInicial, amortizacionCuota, interesCuota);
   }
 
   ArrayList<Cuota> generarTablaCuotas() throws Exception {
     ArrayList<Cuota> nuevaTabla = new ArrayList<>();
+
+    if (tablaCuotas == null){
+      tablaCuotas = nuevaTabla;
+    }
 
     for (int numeroCuota = 1; numeroCuota <= plazoPrestamo; numeroCuota++) {
       nuevaTabla.add(generarCuota(numeroCuota));
